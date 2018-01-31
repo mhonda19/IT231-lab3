@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Quotes</h1>
+<h1 class="w3-center">Quotes</h1>
 
-<table>
+<input class="w3-input w3-border w3-padding" type="text" placeholder="Search for quotes.." id="myInput" onkeyup="myFunction()">
+<table class="w3-table-all" id="myTable">
   <thead>
-    <tr>
+    <tr class="w3-light-blue">
       <th>Author</th>
       <th>Quotation</th>
       <th>Source</th>
@@ -16,7 +17,7 @@
     <% @quotes.each do |quote| %>
       <tr>
         <td><%= quote.author %></td>
-        <td><%= quote.quotation %></td>
+        <td><i>"<%= quote.quotation %>"</i></td>
         <td><%= quote.source %></td>
         <td><%= link_to 'Show', quote %></td>
         <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
@@ -25,7 +26,25 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Quote', new_quote_path %>
+<div class="w3-bar w3-light-blue">
+ <a href="/quotes/new" class="w3-left w3-button"> + New Quote</a>
+</div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

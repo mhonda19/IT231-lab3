@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<div class="w3-container">
+  <div class="w3-panel w3-leftbar w3-light-grey">
+    <p class="w3-xlarge w3-serif"><strong>Quote:</strong><i>"<%= @quote.quotation %>"</i></p>
 <p>
   <strong>Author:</strong>
   <%= @quote.author %>
 </p>
 
 <p>
-  <strong>Quotation:</strong>
-  <%= @quote.quotation %>
-</p>
-
-<p>
   <strong>Source:</strong>
   <%= @quote.source %>
 </p>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_quote_path(@quote) %> |
 <%= link_to 'Back', quotes_path %>
